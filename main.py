@@ -79,7 +79,7 @@ if res == 'S':
 
         elif res == 2:
             print("Qual o tipo de relacionamento que deseja verificar ?")
-            print("1 - AMIGO_DE, 2 - DONO_DE, 3")
+            print("1 - AMIGO_DE, 2 - DONO_DE")
             res = int(input())
             if res == 1:
                 print("Qual propriedade deseja usar 1 - Nome, 2 - Idade, 3 - Cor, 4 - Faixa, 5 - Quantidade de Puffles, 6 - Nenhuma)")
