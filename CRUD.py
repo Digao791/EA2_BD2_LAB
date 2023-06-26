@@ -55,7 +55,10 @@ class festa:
             results = self.db.execute_query(query, parametro)
             return [([result["nome"], result["nome2"]]) for result in results]
         else:
-            query = "MATCH (n:Pinguin {" + f"{tipo}:" +"'" + f"{parametro}"+"'"+"}), (m:Pinguin) WHERE (n) - " + f"[:{relacionamento}] -> (m) RETURN n.nome AS Nome1, m.nome AS Nome2"
+            if tipo == "idade":
+                query = "MATCH (n:Pinguin {" + f"{tipo}:" + f"{parametro}" + "}), (m:Pinguin) WHERE (n) - " + f"[:{relacionamento}] -> (m) RETURN n.nome AS Nome1, m.nome AS Nome2"
+            else:
+                query = "MATCH (n:Pinguin {" + f"{tipo}:" +"'" + f"{parametro}"+"'"+"}), (m:Pinguin) WHERE (n) - " + f"[:{relacionamento}] -> (m) RETURN n.nome AS Nome1, m.nome AS Nome2"
             print(query)
             results = self.db.execute_query(query)
             return [([result["Nome1"], result["Nome2"]]) for result in results]
